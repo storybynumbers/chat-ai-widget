@@ -65,6 +65,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       enableEmojiFeedback:
         props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
       enableMention: props.enableMention ?? initialState.enableMention,
+      branding: props.branding,
     }),
     [props]
   );

@@ -110,6 +110,7 @@ export const DEFAULT_CONSTANT: Constant = {
   enableSourceMessage: true,
   enableEmojiFeedback: true,
   enableMention: true,
+  branding: null,
 };
 
 type ConfigureSession = (
@@ -144,6 +145,13 @@ export interface Constant {
   enableEmojiFeedback: boolean;
   enableMention: boolean;
   firstMessageData: FirstMessageItem[];
+  branding: BrandingOptions | null;
+}
+
+export interface BrandingOptions {
+  chatButtonBackground: string;
+  chatBotIcon: React.FC;
+  showSendbirdAttribution: boolean;
 }
 
 export interface SuggestedReply {

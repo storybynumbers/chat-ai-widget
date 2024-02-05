@@ -107,9 +107,10 @@ interface MessageMeta {
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
-  const { userId, suggestedMessageContent } = useConstantState();
+  const { userId, suggestedMessageContent, branding } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
+  const SHOW_SENDBIRD_BRANDING = branding?.showSendbirdAttribution ?? true;
 
   const channel: GroupChannel | undefined = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[
@@ -235,7 +236,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
         renderTypingIndicator={() => <></>}
         renderPlaceholderLoader={() => <LoadingScreen />}
       />
-      <Banner />
+      {SHOW_SENDBIRD_BRANDING && <Banner />}
     </Root>
   );
 }

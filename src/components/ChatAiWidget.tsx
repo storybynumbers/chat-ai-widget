@@ -8,21 +8,20 @@ import { Constant } from '../const';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
 
-const StyledWidgetButtonWrapper = styled.button`
+type ButtonProps = {
+  buttonBackground?: string;
+};
+
+const StyledWidgetButtonWrapper = styled.button<ButtonProps>`
   position: fixed;
   z-index: 10000;
   bottom: 24px;
   right: 24px;
   width: 48px;
   height: 48px;
-  background: conic-gradient(
-    from 180deg at 50% 50%,
-    #4dcd90 -17.35deg,
-    #6210cc 80.63deg,
-    #6210cc 176.25deg,
-    #4dcd90 342.65deg,
-    #6210cc 440.63deg
-  );
+  background: ${({ buttonBackground }) =>
+    buttonBackground ||
+    'conic-gradient(from 180deg at 50% 50%, #4dcd90 -17.35deg, #6210cc 80.63deg, #6210cc 176.25deg, #4dcd90 342.65deg, #6210cc 440.63deg)'};
   border-radius: 50%;
   color: white;
   transition: all 0.3s cubic-bezier(0.31, -0.105, 0.43, 1.4);
@@ -127,12 +126,17 @@ const ChatAiWidget = (props: Props) => {
     }
   }, []);
 
+  const ChatIcon = props.branding?.chatBotIcon || ChatBotIcon;
+
   return (
     <Fragment>
       <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
-      <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
+      <StyledWidgetButtonWrapper
+        onClick={buttonClickHandler}
+        buttonBackground={props.branding?.chatButtonBackground}
+      >
         <StyledWidgetIcon isOpen={isOpen}>
-          <ChatBotIcon />
+          <ChatIcon />
         </StyledWidgetIcon>
         <StyledArrowIcon isOpen={isOpen}>
           <ArrowDownIcon />
