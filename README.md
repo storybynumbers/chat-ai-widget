@@ -186,6 +186,15 @@ const customConstants = {
   enableEmojiFeedback: true,
   enableMention: true,
   autoOpen: false,
+  // Added for branding customization:
+  branding: {
+      // String for CSS background for widget
+      chatButtonBackground: "#ffcc00";
+      // Component ro render inside the widget, to replace the default icon
+      chatBotIcon: MyCustomIcon;
+      // Set to false to hide Sendbird branding
+      showSendbirdAttribution: false;
+  }
 };
 
 const App = () => {
@@ -208,6 +217,7 @@ const App = () => {
       enableSourceMessage={customConstants.enableSourceMessage}
       enableEmojiFeedback={customConstants.enableEmojiFeedback}
       enableMention={customConstants.enableMention}
+      branding={customConstants.branding}
     />
   );
 };
