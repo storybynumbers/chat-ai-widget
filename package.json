@@ -1,5 +1,5 @@
 {
-  "name": "@sendbird/chat-ai-widget",
+  "name": "@sendbird/chat-ai-widget-collabhouse",
   "version": "1.1.1",
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "./dist/index.umd.js",
