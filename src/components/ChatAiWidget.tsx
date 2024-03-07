@@ -109,7 +109,7 @@ export interface Props extends Partial<Constant> {
 }
 
 const ChatAiWidget = (props: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(props.autoOpen ?? false);
   const timer = useRef<NodeJS.Timeout | null>(null);
   const buttonClickHandler = () => {
     if (timer.current !== null) {
@@ -121,7 +121,8 @@ const ChatAiWidget = (props: Props) => {
 
   useEffect(() => {
     if (getCookie('chatbot').length === 0) {
-      timer.current = setTimeout(() => setIsOpen(() => true), 1000);
+      if (props.autoOpen)
+        timer.current = setTimeout(() => setIsOpen(() => true), 1000);
       setCookie('chatbot');
     }
   }, []);
