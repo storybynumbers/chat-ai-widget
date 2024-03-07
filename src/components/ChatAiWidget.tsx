@@ -109,7 +109,7 @@ export interface Props extends Partial<Constant> {
 }
 
 const ChatAiWidget = (props: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(props.autoOpen ?? false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const timer = useRef<NodeJS.Timeout | null>(null);
   const buttonClickHandler = () => {
     if (timer.current !== null) {
